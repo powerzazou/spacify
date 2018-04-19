@@ -1,42 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-const urlApiCheck = (filmId) => `https://swapi.co/api/films/${filmId}/`;
+const urlApiCheck = (filmId) => `https://swapi.co/api/films/${filmId}/`
 
 class SWApiStatus extends Component {
-  state = {};
+  constructor (props) {
+    super(props)
+    this.state = {}
+  }
 
-  componentDidMount() {
-    fetch(urlApiCheck(this.props.id))
+  componentDidMount () {
+    window.fetch(urlApiCheck(this.props.id))
       .then(res => {
         if (!res.ok) {
-          Promise.reject(res);
+          Promise.reject(res)
         }
-        return res.json();
+        return res.json()
       })
       .then(data => {
         this.setState({
           apiMessage: `✔ UP (${data.title})`
-        });
+        })
       }).catch(res => {
         this.setState({
           error: res.status
-        });
-      });
+        })
+      })
   }
 
-  render() {
+  render () {
     if (this.state.error) {
-      return <p>{this.state.error}</p>;
+      return <p>{this.state.error}</p>
     }
     if (!this.state.apiMessage) {
-      return <p>Loading...</p>;
+      return <p>Loading...</p>
     }
     return (
       <div>
         <p>{this.state.apiMessage}</p>
       </div>
-    );
+    )
   }
 }
 
-export default SWApiStatus;
+export default SWApiStatus

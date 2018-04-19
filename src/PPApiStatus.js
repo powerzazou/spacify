@@ -1,40 +1,43 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class PPApiStatus extends Component {
-  state = {};
+  constructor (props) {
+    super(props)
+    this.state = {}
+  }
 
-  componentDidMount() {
-    fetch('https://test-pilote-prive.herokuapp.com/heartbeat')
+  componentDidMount () {
+    window.fetch('https://test-pilote-prive.herokuapp.com/heartbeat')
       .then(res => {
         if (!res.ok) {
-          Promise.reject(res);
+          Promise.reject(res)
         }
-        return res.json();
+        return res.json()
       })
       .then(res => {
         this.setState({
           apiMessage: '✔ UP'
-        });
+        })
       }).catch(res => {
         this.setState({
           error: res.status
-        });
-      });
+        })
+      })
   }
 
-  render() {
+  render () {
     if (this.state.error) {
-      return <p>{this.state.error}</p>;
+      return <p>{this.state.error}</p>
     }
     if (!this.state.apiMessage) {
-      return <p>Loading...</p>;
+      return <p>Loading...</p>
     }
     return (
       <div>
         <p>{this.state.apiMessage}</p>
       </div>
-    );
+    )
   }
 }
 
-export default PPApiStatus;
+export default PPApiStatus
