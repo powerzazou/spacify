@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import PreviousStepComponent from '../components/previousStep'
-import NextStepComponent from '../components/nextStep'
+import PreviousStepComponent from '../common-components/previousStep'
+import NextStepComponent from '../common-components/nextStep'
 
 export default class ShipSelection extends Component {
   render () {

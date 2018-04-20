@@ -1,0 +1,12 @@
+@import '../vars.scss';
+
+.nextStepButton {
+    color: $text-yellow;
+    border: none;
+    background: transparent;
+    font-family: Viga-Regular;
+    font-size: 13px;
+    letter-spacing: 0.6px;
+    width: 75px;
+    padding: 0px;
+}

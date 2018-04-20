@@ -1,0 +1,27 @@
+.viewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    .viewTop {
+        h1 {
+            color: $text-white;
+            font-family: PassionOne-Regular;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .viewMiddle {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .viewBottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+}

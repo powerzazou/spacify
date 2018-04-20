@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PreviousStepComponent from '../components/previousStep'
+import PreviousStepComponent from '../common-components/previousStep'
 
 export default class TripOverview extends Component {
   render () {
