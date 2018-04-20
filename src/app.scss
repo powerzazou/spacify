@@ -1,0 +1,56 @@
+@import './vars.scss';
+
+// Fonts 
+@font-face {
+    font-family: "PassionOne-Regular";
+    src: url(/assets/fonts/Passion_One/PassionOne-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Viga-Regular";
+    src: url(/assets/fonts/Viga/Viga-Regular.ttf) format("truetype");
+}
+
+// App
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+}
+#app {
+    width: calc(100% - 160px);
+    height: calc(100% - 170px);
+    padding-left: 80px;
+    padding-top: 90px;
+    padding-bottom: 80px;
+    padding-right: 80px;
+    background-image: url('/assets/img-layout/background.png');
+    background-repeat: repeat;
+}
+
+// Generic classes
+.textYellow {
+    color: $text-yellow;
+}
+.textWhite {
+    color: $text-white;
+}
+
+.yellowButton {
+    color: $text-yellow;
+    width: 140px;
+    height: 38px;
+    border: solid 2px $text-yellow;
+    background: transparent;
+    font-family: Viga-Regular;
+    font-size: 14px;
+    letter-spacing: 0.6px;
+}

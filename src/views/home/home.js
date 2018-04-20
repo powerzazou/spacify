@@ -2,13 +2,21 @@ import React, { Component } from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import './home.css'
 
 class HomeView extends Component {
   render () {
     return (
-      <div className='App'>
-        <h1>Bienvenu sur Pilote Privé ! </h1>
-        <button onClick={() => this.props.changePage()}>Reserver un pilote</button>
+      <div className='homeView viewContainer'>
+        <div className='viewTop'>
+          <h1>Welcome on Private-Pilote !</h1>
+        </div>
+        <div className='viewMiddle'>
+          <h2>Hello</h2>
+        </div>
+        <div className='viewBottom'>
+          <button className='yellowButton' onClick={() => this.props.changePage()}>Book a flight</button>
+        </div>
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import StatusView from './views/status'
-import HomeView from './views/home'
+import HomeView from './views/home/home'
 import ShipSelection from './views/shipSelection'
 import SideSelection from './views/sideSelection'
 import PassengersSelection from './views/passengersSelection'
@@ -9,10 +9,12 @@ import DestinationSelection from './views/destinationSelection'
 import TripOverview from './views/tripOverview'
 import Confirmation from './views/confirmation'
 
+import './app.css'
+
 class App extends Component {
   render () {
     return (
-      <div className='App'>
+      <div id='app'>
         <Route exact path='/' component={HomeView} />
 
         <Route exact path='/ship-selection' component={ShipSelection} />

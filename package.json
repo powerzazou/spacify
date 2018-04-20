@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "history": "^4.7.2",
+    "node-sass-chokidar": "^1.2.2",
+    "npm-run-all": "^4.1.2",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -16,9 +18,13 @@
     "superagent": "3.8.2"
   },
   "scripts": {
-    "start": "standard && react-scripts start",
-    "build": "standard && react-scripts build",
-    "test": "standard && react-scripts test --env=jsdom",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "start-js": "standard && react-scripts start",
+    "start": "standard && npm-run-all -p watch-css start-js",
+    "build-js": "standard && react-scripts build",
+    "build": "standard && npm-run-all build-css build-js",
+    "test": "standard & react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
