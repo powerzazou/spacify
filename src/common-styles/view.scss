@@ -5,6 +5,9 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    @media screen and (max-width: 1000px) {
+        min-height: 100vh;
+    }
     .viewTop {
         h1 {
             color: $text-white;
@@ -26,23 +29,50 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        .overviewLeft {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            .shipImage {
-                width: 278px;
-                margin-bottom: 40px;
+        @media screen and (max-width: 1000px) {
+            align-items: flex-end;
+        }
+        
+        .previousStepButton {
+            max-width: 12%;
+        }
+        .nextStepButton {
+            max-width: 18%;
+        }
+        .itemDetails {
+            max-width: 70%;
+            @media screen and (max-width: 1000px) {
+                flex-direction: column;
             }
         }
-        .overviewRight {
-            .destinationImage {
-                width: 307px;
+        .overview {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            @media screen and (max-width: 1000px) {
+                flex-direction: column;
             }
+            .overviewLeft {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .shipImage {
+                    width: 278px;
+                    margin-bottom: 40px;
+                }
+            }
+            .overviewRight {
+                .destinationImage {
+                    width: 307px;
+                }
+            }
+            
         }
         .rightEmptyColumn {
             width: 75px;
+            max-width: 18%;
         }
     }
     .viewBottom {

@@ -27,12 +27,14 @@ class TripOverview extends Component {
         </div>
         <div className='viewMiddle'>
           <PreviousStepComponent path='/destination-selection' />
-          <div className='overviewLeft'>
-            <img className='shipImage' src={`/assets/img-content/focus/spaceship/${selectedShip.image}`} />
-            <ItemListComponent items={itemListItems} />
-          </div>
-          <div className='overviewRight'>
-            <img className='destinationImage' src={`/assets/img-content/focus/planet/${selectedDestination.image}`} />
+          <div className='overview'>
+            <div className='overviewLeft'>
+              <img className='shipImage' src={`/assets/img-content/focus/spaceship/${selectedShip.image}`} />
+              <ItemListComponent items={itemListItems} />
+            </div>
+            <div className='overviewRight'>
+              <img className='destinationImage' src={`/assets/img-content/focus/planet/${selectedDestination.image}`} />
+            </div>
           </div>
           <div className='rightEmptyColumn' />
 

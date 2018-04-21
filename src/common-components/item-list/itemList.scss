@@ -1,6 +1,11 @@
 @import '../../vars.scss';
 .itemList {
+    margin-top: 20px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 100%;
     p {
         color: $text-yellow;
         font-family: Viga-Regular;
@@ -9,17 +14,22 @@
         position: absolute;
         margin: 0;
         margin-left: 50px;
+        margin-top: 20px;
     }
     img {
         width: 81px;
-        margin-left: 50px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-top: 20px;
     }
-    div:first-child {
-        img {
-            margin-left: 0;
-        }
-        p {
-            margin-left: 0;
+    @media screen and (min-width: 1000px) {
+        div:first-child {
+            img {
+                margin-left: 0;
+            }
+            p {
+                margin-left: 0;
+            }
         }
     }
 }
