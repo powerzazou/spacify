@@ -17,18 +17,19 @@ class PassengersSelection extends Component {
     }
   }
   render () {
-    const shownPassenger = this.props.passengers.passengerList.find((passenger) => {
-      return passenger.id === this.props.passengers.shownPassengerId
+    const passengers = this.props.passengers
+    const shownPassenger = passengers.passengerList.find((passenger) => {
+      return passenger.id === passengers.shownPassengerId
     })
     const shownPassengerDetails = Object.keys(shownPassenger).filter((property) => {
       return (property !== 'name' && property !== 'id' && property !== 'image' && property !== 'side')
     }).map((property) => {
       return { label: property, data: shownPassenger[property] }
     })
-    const itemListItems = this.props.passengers.passengerList.filter((passenger) => {
+    const itemListItems = passengers.passengerList.filter((passenger) => {
       return passenger.side === this.props.sides.selectedSideId
     }).map((passenger) => {
-      const isSelected = this.props.passengers.selectedPassengersIds.includes(passenger.id)
+      const isSelected = passengers.selectedPassengersIds.includes(passenger.id)
       return {id: passenger.id, isSelected: isSelected, source: `/assets/img-content/miniature/perso/${passenger.image}`}
     })
     return (
@@ -36,6 +37,7 @@ class PassengersSelection extends Component {
         <div className='viewTop'>
           <h1>Select Passenger</h1>
           <ProgressBarComponent progress={60} />
+          <p>{passengers.selectedPassengersIds.length}/{passengers.maxAllowedPassengers}</p>
         </div>
         <div className='viewMiddle'>
           <PreviousStepComponent path='/side-selection' />
@@ -44,10 +46,10 @@ class PassengersSelection extends Component {
             name={shownPassenger.name}
             image={`/assets/img-content/focus/perso/${shownPassenger.image}`}
             details={shownPassengerDetails}
-            isSelected={(this.props.passengers.selectedPassengersIds.includes(shownPassenger.id))}
+            isSelected={(passengers.selectedPassengersIds.includes(shownPassenger.id))}
             onChoose={this.props.addSelectedPassenger}
             onUnselect={this.props.removeSelectedPassenger} />
-          <NextStepComponent disabled={!this.props.passengers.selectedPassengerId} path='/destination-selection' />
+          <NextStepComponent disabled={!(passengers.selectedPassengersIds.length === passengers.maxAllowedPassengers)} path='/destination-selection' />
         </div>
         <div className='viewBottom'>
           <ItemListComponent items={itemListItems} onChoose={this.props.changeShownPassenger} />

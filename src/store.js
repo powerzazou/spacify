@@ -20,7 +20,7 @@ const initialState = {
     ]
   },
   sides: {
-    selectedSideId: null,
+    selectedSideId: 1,
     shownSideId: 1,
     sideList: [
       {id: 1, name: 'Light Side', image: 'light.png'},
@@ -28,6 +28,7 @@ const initialState = {
     ]
   },
   passengers: {
+    maxAllowedPassengers: 2,
     selectedPassengersIds: [],
     shownPassengerId: 1,
     passengerList: [
