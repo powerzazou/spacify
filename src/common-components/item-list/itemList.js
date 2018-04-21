@@ -14,9 +14,9 @@ export default class ItemListComponent extends Component {
         {this.props.items.map((item) => {
           const selectedElement = (item.isSelected) ? <p>Selected</p> : null
           return (
-            <div>
+            <div key={item.id}>
               {selectedElement}
-              <img key={item.id} data-id={item.id} src={item.source} onClick={(e) => this.handleClick(e)} />
+              <img data-id={item.id} src={item.source} onClick={(e) => this.handleClick(e)} />
             </div>)
         })}
       </div>

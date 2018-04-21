@@ -21,3 +21,20 @@ export function changeShownSide (id) {
 export function changeSelectedSide (id) {
   return {type: CHANGE_SELECTED_SIDE, id}
 }
+
+// Passengers management
+export const CHANGE_SHOWN_PASSENGER = '@@SPACIFY/CHANGE_SHOWN_PASSENGER'
+export const ADD_SELECTED_PASSENGER = '@@SPACIFY/ADD_SELECTED_PASSENGER'
+export const REMOVE_SELECTED_PASSENGER = '@@SPACIFY/REMOVE_SELECTED_PASSENGER'
+
+export function changeShownPassenger (id) {
+  return {type: CHANGE_SHOWN_PASSENGER, id}
+}
+
+export function addSelectedPassenger (id) {
+  return {type: ADD_SELECTED_PASSENGER, id}
+}
+
+export function removeSelectedPassenger (id) {
+  return {type: REMOVE_SELECTED_PASSENGER, id}
+}
