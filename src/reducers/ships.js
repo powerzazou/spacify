@@ -8,7 +8,7 @@ export default function ships (state = {}, action) {
     }
     case CHANGE_SELECTED_SPACESHIP: {
       const { id } = action
-      return {...state, selectedSpaceshipId: parseInt(id, 10)}
+      return {...state, selectedShipId: parseInt(id, 10)}
     }
     default: {
       return state

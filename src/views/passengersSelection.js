@@ -12,12 +12,13 @@ import { push } from 'react-router-redux'
 class PassengersSelection extends Component {
   constructor (props) {
     super(props)
-    if (!props.sides.selectedSideId) {
+    if (!props.sides.selectedSideId || !this.props.ships.selectedShipId) {
       props.changePage('/')
     }
   }
   render () {
     const passengers = this.props.passengers
+    const maxAllowedPassengers = this.props.ships.shipList.find(ship => this.props.ships.selectedShipId === ship.id).capacity
     const shownPassenger = passengers.passengerList.find((passenger) => {
       return passenger.id === passengers.shownPassengerId
     })
@@ -37,7 +38,7 @@ class PassengersSelection extends Component {
         <div className='viewTop'>
           <h1>Select Passenger</h1>
           <ProgressBarComponent progress={60} />
-          <p>{passengers.selectedPassengersIds.length}/{passengers.maxAllowedPassengers}</p>
+          <p>{passengers.selectedPassengersIds.length}/{maxAllowedPassengers}</p>
         </div>
         <div className='viewMiddle'>
           <PreviousStepComponent path='/side-selection' />
@@ -49,7 +50,7 @@ class PassengersSelection extends Component {
             isSelected={(passengers.selectedPassengersIds.includes(shownPassenger.id))}
             onChoose={this.props.addSelectedPassenger}
             onUnselect={this.props.removeSelectedPassenger} />
-          <NextStepComponent disabled={!(passengers.selectedPassengersIds.length === passengers.maxAllowedPassengers)} path='/destination-selection' />
+          <NextStepComponent disabled={!(passengers.selectedPassengersIds.length <= maxAllowedPassengers)} path='/destination-selection' />
         </div>
         <div className='viewBottom'>
           <ItemListComponent items={itemListItems} onChoose={this.props.changeShownPassenger} />
@@ -59,7 +60,7 @@ class PassengersSelection extends Component {
   }
 }
 
-const mapStateToProps = ({ passengers, sides }) => ({ passengers, sides })
+const mapStateToProps = ({ passengers, sides, ships }) => ({ passengers, sides, ships })
 const mapDispatchToProps = (dispatch) => {
   const { changeShownPassenger, addSelectedPassenger, removeSelectedPassenger } = actionCreators
   return bindActionCreators({ changeShownPassenger, addSelectedPassenger, removeSelectedPassenger, changePage: (path) => push(path) }, dispatch)

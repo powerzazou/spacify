@@ -10,17 +10,17 @@ export const history = createHistory()
 const initialState = {
   ships: {
     selectedShipId: null,
-    shownShipId: 1,
+    shownShipId: 12,
     shipList: [
-      {id: 1, name: 'X-Wing', capacity: 2, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'x-wing.png'},
-      {id: 2, name: 'Milenium', capacity: 2, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'milenium.png'},
-      {id: 3, name: 'Arc100', capacity: 2, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'arc100.png'},
-      {id: 4, name: 'Imperial', capacity: 2, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'imperial.png'},
-      {id: 5, name: 'Y-Wing', capacity: 2, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'y-wing.png'}
+      {id: 12, name: 'X-Wing', capacity: 0, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'x-wing.png'},
+      {id: 10, name: 'Milenium', capacity: 6, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'milenium.png'},
+      {id: 66, name: 'Arc170', capacity: 0, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'arc100.png'},
+      {id: 22, name: 'Imperial', capacity: 20, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'imperial.png'},
+      {id: 11, name: 'Y-Wing', capacity: 0, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'y-wing.png'}
     ]
   },
   sides: {
-    selectedSideId: 1,
+    selectedSideId: null,
     shownSideId: 1,
     sideList: [
       {id: 1, name: 'Light Side', image: 'light.png'},
@@ -28,7 +28,6 @@ const initialState = {
     ]
   },
   passengers: {
-    maxAllowedPassengers: 2,
     selectedPassengersIds: [],
     shownPassengerId: 1,
     passengerList: [

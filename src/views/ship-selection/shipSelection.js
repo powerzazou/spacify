@@ -19,7 +19,7 @@ class ShipSelection extends Component {
       return { label: property, data: shownShip[property] }
     })
     const itemListItems = this.props.ships.shipList.map((ship) => {
-      const isSelected = this.props.ships.selectedSpaceshipId === ship.id
+      const isSelected = this.props.ships.selectedShipId === ship.id
       return {id: ship.id, isSelected: isSelected, source: `/assets/img-content/miniature/spaceship/${ship.image}`}
     })
     return (
@@ -35,10 +35,10 @@ class ShipSelection extends Component {
             name={shownShip.name}
             image={`/assets/img-content/focus/spaceship/${shownShip.image}`}
             details={showShipDetails}
-            isSelected={(shownShip.id === this.props.ships.selectedSpaceshipId)}
+            isSelected={(shownShip.id === this.props.ships.selectedShipId)}
             onChoose={this.props.changeSelectedSpaceship}
             onUnselect={() => this.props.changeSelectedSpaceship(null)} />
-          <NextStepComponent disabled={!this.props.ships.selectedSpaceshipId} path='/side-selection' />
+          <NextStepComponent disabled={!this.props.ships.selectedShipId} path='/side-selection' />
         </div>
         <div className='viewBottom'>
           <ItemListComponent items={itemListItems} onChoose={this.props.changeShownSpaceship} />
