@@ -45,6 +45,18 @@ const initialState = {
       {id: 11, name: 'Grievous', side: 2, image: 'grievous.png'},
       {id: 12, name: 'Palpatine', side: 2, image: 'palpatine.png'}
     ]
+  },
+  destinations: {
+    selectedDestinationId: null,
+    shownDestinationId: 1,
+    destinationList: [
+      {id: 1, name: 'Coruscant', climat: 'arid', gravity: '8,4N/KG', image: 'coruscant.png'},
+      {id: 2, name: 'Earth', image: 'earth.png'},
+      {id: 3, name: 'Hoth', image: 'hoth.png'},
+      {id: 4, name: 'Naboo', image: 'naboo.png'},
+      {id: 5, name: 'Tatooine', image: 'tatooine.png'},
+      {id: 6, name: 'Yavin-4', image: 'yavin4.png'}
+    ]
   }
 }
 

@@ -38,3 +38,15 @@ export function addSelectedPassenger (id) {
 export function removeSelectedPassenger (id) {
   return {type: REMOVE_SELECTED_PASSENGER, id}
 }
+
+// Destination management
+export const CHANGE_SHOWN_DESTINATION = '@@SPACIFY/CHANGE_SHOWN_DESTINATION'
+export const CHANGE_SELECTED_DESTINATION = '@@SPACIFY/CHANGE_SELECTED_DESTINATION'
+
+export function changeShownDestination (id) {
+  return {type: CHANGE_SHOWN_DESTINATION, id}
+}
+
+export function changeSelectedDestination (id) {
+  return {type: CHANGE_SELECTED_DESTINATION, id}
+}
