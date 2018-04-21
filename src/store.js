@@ -9,7 +9,7 @@ export const history = createHistory()
 // Default State
 const initialState = {
   ships: {
-    selectedShipId: null,
+    selectedShipId: 10,
     shownShipId: 12,
     shipList: [
       {id: 12, name: 'X-Wing', capacity: 0, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'x-wing.png'},
@@ -20,7 +20,7 @@ const initialState = {
     ]
   },
   sides: {
-    selectedSideId: null,
+    selectedSideId: 1,
     shownSideId: 1,
     sideList: [
       {id: 1, name: 'Light Side', image: 'light.png'},
@@ -28,7 +28,7 @@ const initialState = {
     ]
   },
   passengers: {
-    selectedPassengersIds: [],
+    selectedPassengersIds: [1, 2, 3, 4, 5, 6],
     shownPassengerId: 1,
     passengerList: [
       {id: 1, name: 'Yoda', side: 1, image: 'yoda.png', eyes: 'blue', gendre: 'male'},
@@ -46,7 +46,7 @@ const initialState = {
     ]
   },
   destinations: {
-    selectedDestinationId: null,
+    selectedDestinationId: 1,
     shownDestinationId: 1,
     destinationList: [
       {id: 1, name: 'Coruscant', climat: 'arid', gravity: '8,4N/KG', image: 'coruscant.png'},

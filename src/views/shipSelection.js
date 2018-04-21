@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import NextStepComponent from '../../common-components/nextStep'
-import PreviousStepComponent from '../../common-components/previousStep'
-import ProgressBarComponent from '../../common-components/progressBar'
-import ItemDetailComponent from '../../common-components/item-details/itemDetails'
-import ItemListComponent from '../../common-components/item-list/itemList'
-import * as actionCreators from '../../action-creators'
+import NextStepComponent from '../common-components/nextStep'
+import PreviousStepComponent from '../common-components/previousStep'
+import ProgressBarComponent from '../common-components/progressBar'
+import ItemDetailComponent from '../common-components/item-details/itemDetails'
+import ItemListComponent from '../common-components/item-list/itemList'
+import * as actionCreators from '../action-creators'
 
 class ShipSelection extends Component {
   render () {

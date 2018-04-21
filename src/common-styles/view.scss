@@ -26,6 +26,24 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        .overviewLeft {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .shipImage {
+                width: 278px;
+                margin-bottom: 40px;
+            }
+        }
+        .overviewRight {
+            .destinationImage {
+                width: 307px;
+            }
+        }
+        .rightEmptyColumn {
+            width: 75px;
+        }
     }
     .viewBottom {
         display: flex;
