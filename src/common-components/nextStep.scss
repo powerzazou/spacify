@@ -9,4 +9,7 @@
     letter-spacing: 0.6px;
     width: 75px;
     padding: 0px;
+    &:disabled {
+        opacity: 0.5;
+    }
 }

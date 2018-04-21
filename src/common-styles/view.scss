@@ -1,3 +1,5 @@
+@import '../vars.scss';
+
 .viewContainer {
     display: flex;
     flex-direction: column;
@@ -11,7 +13,7 @@
             letter-spacing: 1px;
         }
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: flex-start;
     }
     .viewMiddle {

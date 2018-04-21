@@ -1,0 +1,20 @@
+@import '../../vars.scss';
+.itemList {
+    display: flex;
+    p {
+        color: $text-yellow;
+        font-family: Viga-Regular;
+        font-size: 14px;
+        letter-spacing: 0.6px;
+        position: absolute;
+        margin: 0;
+        margin-left: 50px;
+    }
+    img {
+        width: 81px;
+        margin-left: 50px;
+        &::first {
+            margin-left: 0;
+        }
+    }
+}
