@@ -18,6 +18,14 @@ const initialState = {
       {id: 4, name: 'Imperial', capacity: 2, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'imperial.png'},
       {id: 5, name: 'Y-Wing', capacity: 2, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'y-wing.png'}
     ]
+  },
+  sides: {
+    selectedSideId: null,
+    shownSideId: 1,
+    sideList: [
+      {id: 1, name: 'Light Side', image: 'light.png'},
+      {id: 2, name: 'Dartk Side', image: 'dark.png'}
+    ]
   }
 }
 

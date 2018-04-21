@@ -9,3 +9,15 @@ export function changeShownSpaceship (id) {
 export function changeSelectedSpaceship (id) {
   return {type: CHANGE_SELECTED_SPACESHIP, id}
 }
+
+// Side management
+export const CHANGE_SHOWN_SIDE = '@@SPACIFY/CHANGE_SHOWN_SIDE'
+export const CHANGE_SELECTED_SIDE = '@@SPACIFY/CHANGE_SELECTED_SIDE'
+
+export function changeShownSide (id) {
+  return {type: CHANGE_SHOWN_SIDE, id}
+}
+
+export function changeSelectedSide (id) {
+  return {type: CHANGE_SELECTED_SIDE, id}
+}

@@ -1,15 +1,57 @@
 import React, { Component } from 'react'
-import PreviousStepComponent from '../common-components/previousStep'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import NextStepComponent from '../common-components/nextStep'
+import PreviousStepComponent from '../common-components/previousStep'
+import ProgressBarComponent from '../common-components/progressBar'
+import ItemDetailComponent from '../common-components/item-details/itemDetails'
+import ItemListComponent from '../common-components/item-list/itemList'
+import * as actionCreators from '../action-creators'
 
-export default class ShipSelection extends Component {
+class SideSelection extends Component {
   render () {
+    const shownSide = this.props.sides.sideList.find((side) => {
+      return side.id === this.props.sides.shownSideId
+    })
+    const shownSideDetails = Object.keys(shownSide).filter((property) => {
+      return (property !== 'name' && property !== 'id' && property !== 'image')
+    }).map((property) => {
+      return { label: property, data: shownSide[property] }
+    })
+    const itemListItems = this.props.sides.sideList.map((side) => {
+      const isSelected = this.props.sides.selectedSideId === side.id
+      return {id: side.id, isSelected: isSelected, source: `/assets/img-content/miniature/side/${side.image}`}
+    })
     return (
-      <div className='App'>
-        <h1>Select your Side</h1>
-        <PreviousStepComponent path='/ship-selection' />
-        <NextStepComponent path='/passengers-selection' />
+      <div className='sideSelectionView viewContainer'>
+        <div className='viewTop'>
+          <h1>Select your Side</h1>
+          <ProgressBarComponent progress={40} />
+        </div>
+        <div className='viewMiddle'>
+          <PreviousStepComponent path='/ship-selection' />
+          <ItemDetailComponent
+            id={shownSide.id}
+            name={shownSide.name}
+            image={`/assets/img-content/focus/side/${shownSide.image}`}
+            details={shownSideDetails}
+            isSelected={(shownSide.id === this.props.sides.selectedSideId)}
+            onChoose={this.props.changeSelectedSide}
+            onUnselect={() => this.props.changeSelectedSide(null)} />
+          <NextStepComponent disabled={!this.props.sides.selectedSideId} path='/passengers-selection' />
+        </div>
+        <div className='viewBottom'>
+          <ItemListComponent items={itemListItems} onChoose={this.props.changeShownSide} />
+        </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = ({ sides }) => ({ sides })
+const mapDispatchToProps = (dispatch) => {
+  const { changeShownSide, changeSelectedSide } = actionCreators
+  return bindActionCreators({ changeShownSide, changeSelectedSide }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideSelection)
