@@ -40,7 +40,7 @@ class TripOverview extends Component {
 
         </div>
         <div className='viewBottom'>
-          <button className='yellowButton' onClick={() => this.props.changePage('/')}>GO</button>
+          <button className='yellowButton' onClick={() => this.props.changePage('/confirmation')}>GO</button>
         </div>
       </div>
     )
