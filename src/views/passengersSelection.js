@@ -67,7 +67,7 @@ class PassengersSelection extends Component {
               isSelected={(passengers.selectedPassengersIds.includes(shownPassenger.id))}
               onChoose={this.props.addSelectedPassenger}
               onUnselect={this.props.removeSelectedPassenger} />
-            <NextStepComponent disabled={!(passengers.selectedPassengersIds.length <= maxAllowedPassengers)} path='/destination-selection' />
+            <NextStepComponent disabled={!(passengers.selectedPassengersIds.length <= maxAllowedPassengers && passengers.selectedPassengersIds.length > 0)} path='/destination-selection' />
           </div>
           <div className='viewBottom'>
             <ItemListComponent items={itemListItems} onChoose={this.props.changeShownPassenger} />

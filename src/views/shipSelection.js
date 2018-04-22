@@ -78,7 +78,7 @@ class ShipSelection extends Component {
           return {
             id: ship.id,
             name: ship.name,
-            capacity: parseInt(ship.passengers, 10),
+            capacity: (parseInt(ship.passengers, 10) > 0) ? parseInt(ship.passengers, 10) : 1, // parce que sinon l'api de pricing ne marche pas sans passager :'(
             manufacturer: ship.manufacturer,
             model: ship.model,
             length: ship.length

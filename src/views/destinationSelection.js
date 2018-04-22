@@ -9,6 +9,29 @@ import ItemListComponent from '../common-components/item-list/itemList'
 import * as actionCreators from '../action-creators'
 
 class DestinationSelection extends Component {
+  async changeShownDestination (destinationId) {
+    const { ships, passengers } = this.props
+    const requestBody = {
+      starship_id: ships.selectedShipId,
+      planet_id: parseInt(destinationId, 10),
+      passengers: passengers.selectedPassengersIds
+    }
+    try {
+      const quotation = await window.fetch('https://test-pilote-prive.herokuapp.com/api/price/quote', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      }).then((response) => response.json())
+      this.props.changeShownDestination(destinationId)
+      this.props.setQuotationPrice({...quotation, ...requestBody, passengersId: passengers.selectedPassengersIds})
+    } catch (e) {
+      // TODO set une erreur dans le state et afficher
+      console.error(e)
+    }
+  }
   render () {
     const destinations = this.props.destinations
     if (this.props.destinations.destinationList.length === 0) {
@@ -58,7 +81,7 @@ class DestinationSelection extends Component {
             <NextStepComponent disabled={!destinations.selectedDestinationId} path='/trip-overview' />
           </div>
           <div className='viewBottom'>
-            <ItemListComponent items={itemListItems} onChoose={this.props.changeShownDestination} />
+            <ItemListComponent items={itemListItems} onChoose={(id) => this.changeShownDestination(id)} />
           </div>
         </div>
       )
@@ -85,6 +108,7 @@ class DestinationSelection extends Component {
           }
         })
         this.props.setDestinationList(formatedDestination)
+        this.changeShownDestination(formatedDestination[0].id)
       } catch (e) {
         // TODO set une erreur dans le state et afficher
         console.error(e)
@@ -93,10 +117,10 @@ class DestinationSelection extends Component {
   }
 }
 
-const mapStateToProps = ({ destinations }) => ({ destinations })
+const mapStateToProps = ({ ships, passengers, destinations }) => ({ ships, passengers, destinations })
 const mapDispatchToProps = (dispatch) => {
-  const { changeShownDestination, changeSelectedDestination, setDestinationList } = actionCreators
-  return bindActionCreators({ changeShownDestination, changeSelectedDestination, setDestinationList }, dispatch)
+  const { changeShownDestination, changeSelectedDestination, setDestinationList, setQuotationPrice } = actionCreators
+  return bindActionCreators({ changeShownDestination, changeSelectedDestination, setDestinationList, setQuotationPrice }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DestinationSelection)

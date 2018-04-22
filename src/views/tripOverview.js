@@ -7,18 +7,18 @@ import { push } from 'react-router-redux'
 
 // import ItemDetailComponent from '../common-components/item-details/itemDetails'
 import ItemListComponent from '../common-components/item-list/itemList'
-// import * as actionCreators from '../action-creators'
+import * as actionCreators from '../action-creators'
 
 class TripOverview extends Component {
   render () {
-    const { passengers, ships, destinations } = this.props
+    const { passengers, ships, destinations, quotation } = this.props
     const itemListItems = passengers.passengerList.filter((passenger) => {
-      return passengers.selectedPassengersIds.includes(passenger.id)
+      return quotation.passengersId.includes(passenger.id)
     }).map((passenger) => {
       return {id: passenger.id, source: `/assets/img-content/miniature/perso/${passenger.id}.png`}
     })
-    const selectedShip = ships.shipList.find(ship => ship.id === ships.selectedShipId)
-    const selectedDestination = destinations.destinationList.find(destination => destination.id === destinations.selectedDestinationId)
+    const selectedShip = ships.shipList.find(ship => ship.id === quotation.starship_id)
+    const selectedDestination = destinations.destinationList.find(destination => destination.id === quotation.planet_id)
     return (
       <div className='tripOverviewView viewContainer'>
         <div className='viewTop'>
@@ -40,17 +40,39 @@ class TripOverview extends Component {
 
         </div>
         <div className='viewBottom'>
-          <button className='yellowButton' onClick={() => this.props.changePage('/confirmation')}>GO</button>
+          <button className='yellowButton' onClick={() => this.props.changePage('/confirmation')}>{quotation.price} {quotation.currency} <br /> GO</button>
         </div>
       </div>
     )
   }
+  async componentDidMount () {
+    const { ships, passengers, destinations } = this.props
+    const requestBody = {
+      starship_id: ships.selectedShipId,
+      planet_id: destinations.selectedDestinationId,
+      passengers: passengers.selectedPassengersIds
+    }
+    try {
+      const quotation = await window.fetch('https://test-pilote-prive.herokuapp.com/api/price/quote', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      }).then((response) => response.json())
+      this.props.setQuotationPrice({...quotation, ...requestBody, passengersId: passengers.selectedPassengersIds})
+    } catch (e) {
+      // TODO set une erreur dans le state et afficher
+      console.error(e)
+    }
+  }
 }
 
-const mapStateToProps = ({ passengers, destinations, ships }) => ({ passengers, destinations, ships })
+const mapStateToProps = ({ passengers, destinations, ships, quotation }) => ({ passengers, destinations, ships, quotation })
 const mapDispatchToProps = (dispatch) => {
-  // const { changeShownSpaceship,  } = actionCreators
-  return bindActionCreators({ changePage: (path) => push(path) }, dispatch)
+  const { setQuotationPrice } = actionCreators
+  return bindActionCreators({ setQuotationPrice, changePage: (path) => push(path) }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripOverview)

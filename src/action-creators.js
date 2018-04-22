@@ -69,3 +69,10 @@ export function changeSelectedDestination (id) {
 export function setDestinationList (list) {
   return {type: SET_DESTINATION_LIST, list}
 }
+
+// Quotation Management
+export const SET_QUOTATION_PRICE = '@@SPACIFY/SET_QUOTATION_PRICE'
+
+export function setQuotationPrice (quotation) {
+  return {type: SET_QUOTATION_PRICE, quotation}
+}

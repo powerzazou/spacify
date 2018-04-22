@@ -30,7 +30,8 @@ const initialState = {
     selectedDestinationId: null,
     shownDestinationId: null,
     destinationList: []
-  }
+  },
+  quotation: {}
 }
 
 const enhancers = []
