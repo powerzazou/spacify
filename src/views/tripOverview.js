@@ -11,7 +11,7 @@ import * as actionCreators from '../action-creators'
 
 class TripOverview extends Component {
   async orderRide () {
-    const { starship_id, planet_id, passengersId } = this.props.quotation
+    const { starship_id, planet_id, passengersId } = this.props.quotation // eslint-disable-line
     const requestBody = {
       starship_id: starship_id,
       planet_id: planet_id,
