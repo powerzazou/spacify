@@ -9,18 +9,12 @@ export const history = createHistory()
 // Default State
 const initialState = {
   ships: {
-    selectedShipId: 10,
-    shownShipId: 12,
-    shipList: [
-      {id: 12, name: 'X-Wing', capacity: 0, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'x-wing.png'},
-      {id: 10, name: 'Milenium', capacity: 6, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'milenium.png'},
-      {id: 66, name: 'Arc170', capacity: 0, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'arc100.png'},
-      {id: 22, name: 'Imperial', capacity: 20, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'imperial.png'},
-      {id: 11, name: 'Y-Wing', capacity: 0, manufacturer: 'Corporation Incom', model: 'T-65', width: '12.5m', image: 'y-wing.png'}
-    ]
+    selectedShipId: null,
+    shownShipId: null,
+    shipList: []
   },
   sides: {
-    selectedSideId: 1,
+    selectedSideId: null,
     shownSideId: 1,
     sideList: [
       {id: 1, name: 'Light Side', image: 'light.png'},
@@ -46,15 +40,15 @@ const initialState = {
     ]
   },
   destinations: {
-    selectedDestinationId: 1,
-    shownDestinationId: 1,
+    selectedDestinationId: null,
+    shownDestinationId: 9,
     destinationList: [
-      {id: 1, name: 'Coruscant', climat: 'arid', gravity: '8,4N/KG', image: 'coruscant.png'},
+      {id: 9, name: 'Coruscant', climat: 'arid', gravity: '8,4N/KG', image: 'coruscant.png'},
       {id: 2, name: 'Earth', image: 'earth.png'},
-      {id: 3, name: 'Hoth', image: 'hoth.png'},
-      {id: 4, name: 'Naboo', image: 'naboo.png'},
-      {id: 5, name: 'Tatooine', image: 'tatooine.png'},
-      {id: 6, name: 'Yavin-4', image: 'yavin4.png'}
+      {id: 4, name: 'Hoth', image: 'hoth.png'},
+      {id: 8, name: 'Naboo', image: 'naboo.png'},
+      {id: 1, name: 'Tatooine', image: 'tatooine.png'},
+      {id: 3, name: 'Yavin-4', image: 'yavin4.png'}
     ]
   }
 }
