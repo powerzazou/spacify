@@ -9,6 +9,12 @@ import ItemListComponent from '../common-components/item-list/itemList'
 import * as actionCreators from '../action-creators'
 
 class SideSelection extends Component {
+  changeSelectedSide (sideId) {
+    const newShownPassengerId = (sideId === 1) ? 20 : 22
+    this.props.changeSelectedSide(sideId)
+    this.props.changeShownPassenger(newShownPassengerId)
+    this.props.removeAllSelectedPassengers()
+  }
   render () {
     const shownSide = this.props.sides.sideList.find((side) => {
       return side.id === this.props.sides.shownSideId
@@ -36,7 +42,7 @@ class SideSelection extends Component {
             image={`/assets/img-content/focus/side/${shownSide.image}`}
             details={shownSideDetails}
             isSelected={(shownSide.id === this.props.sides.selectedSideId)}
-            onChoose={this.props.changeSelectedSide}
+            onChoose={(sideId) => this.changeSelectedSide(sideId)}
             onUnselect={() => this.props.changeSelectedSide(null)} />
           <NextStepComponent disabled={!this.props.sides.selectedSideId} path='/passengers-selection' />
         </div>
@@ -50,8 +56,8 @@ class SideSelection extends Component {
 
 const mapStateToProps = ({ sides }) => ({ sides })
 const mapDispatchToProps = (dispatch) => {
-  const { changeShownSide, changeSelectedSide } = actionCreators
-  return bindActionCreators({ changeShownSide, changeSelectedSide }, dispatch)
+  const { changeShownSide, changeSelectedSide, changeShownPassenger, removeAllSelectedPassengers } = actionCreators
+  return bindActionCreators({ changeShownSide, changeSelectedSide, changeShownPassenger, removeAllSelectedPassengers }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideSelection)

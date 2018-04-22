@@ -1,4 +1,4 @@
-import { CHANGE_SHOWN_PASSENGER, ADD_SELECTED_PASSENGER, REMOVE_SELECTED_PASSENGER } from '../action-creators'
+import { CHANGE_SHOWN_PASSENGER, ADD_SELECTED_PASSENGER, REMOVE_SELECTED_PASSENGER, REMOVE_ALL_SELECTED_PASSENGERS } from '../action-creators'
 
 export default function passengers (state = {}, action) {
   switch (action.type) {
@@ -18,6 +18,9 @@ export default function passengers (state = {}, action) {
         return passengerId !== id
       })
       return {...state, selectedPassengersIds: newSelectedPassengersIds}
+    }
+    case REMOVE_ALL_SELECTED_PASSENGERS: {
+      return {...state, selectedPassengersIds: []}
     }
     default: {
       return state

@@ -28,21 +28,21 @@ const initialState = {
     ]
   },
   passengers: {
-    selectedPassengersIds: [1, 2, 3, 4, 5, 6],
-    shownPassengerId: 1,
+    selectedPassengersIds: [],
+    shownPassengerId: 20,
     passengerList: [
-      {id: 1, name: 'Yoda', side: 1, image: 'yoda.png', eyes: 'blue', gendre: 'male'},
-      {id: 2, name: 'Anakin', side: 1, image: 'anakin.png'},
-      {id: 3, name: 'Han', side: 1, image: 'hansolo.png'},
-      {id: 4, name: 'Chewee', side: 1, image: 'chewee.png'},
+      {id: 20, name: 'Yoda', side: 1, image: 'yoda.png', eyes: 'blue', gendre: 'male'},
+      {id: 11, name: 'Anakin', side: 1, image: 'anakin.png'},
+      {id: 14, name: 'Han', side: 1, image: 'hansolo.png'},
+      {id: 13, name: 'Chewee', side: 1, image: 'chewee.png'},
       {id: 5, name: 'Leia', side: 1, image: 'leia.png'},
-      {id: 6, name: 'Ackbar', side: 1, image: 'ackbar.png'},
-      {id: 7, name: 'Boba Fett', side: 2, image: 'bobafett.png'},
-      {id: 8, name: 'Dark Vador', side: 2, image: 'darkvador.png'},
-      {id: 9, name: 'Darth Maul', side: 2, image: 'darthmaul.png'},
-      {id: 10, name: 'Tarkin', side: 2, image: 'grandmoff.png'},
-      {id: 11, name: 'Grievous', side: 2, image: 'grievous.png'},
-      {id: 12, name: 'Palpatine', side: 2, image: 'palpatine.png'}
+      {id: 27, name: 'Ackbar', side: 1, image: 'ackbar.png'},
+      {id: 22, name: 'Boba Fett', side: 2, image: 'bobafett.png'},
+      {id: 4, name: 'Dark Vador', side: 2, image: 'darkvador.png'},
+      {id: 44, name: 'Darth Maul', side: 2, image: 'darthmaul.png'},
+      {id: 12, name: 'Tarkin', side: 2, image: 'grandmoff.png'},
+      {id: 79, name: 'Grievous', side: 2, image: 'grievous.png'},
+      {id: 21, name: 'Palpatine', side: 2, image: 'palpatine.png'}
     ]
   },
   destinations: {
