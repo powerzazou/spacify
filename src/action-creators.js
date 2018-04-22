@@ -32,6 +32,7 @@ export const CHANGE_SHOWN_PASSENGER = '@@SPACIFY/CHANGE_SHOWN_PASSENGER'
 export const ADD_SELECTED_PASSENGER = '@@SPACIFY/ADD_SELECTED_PASSENGER'
 export const REMOVE_SELECTED_PASSENGER = '@@SPACIFY/REMOVE_SELECTED_PASSENGER'
 export const REMOVE_ALL_SELECTED_PASSENGERS = '@@SPACIFY/REMOVE_ALL_SELECTED_PASSENGERS'
+export const SET_PASSENGER_LIST = '@@SPACIFY/SET_PASSENGER_LIST'
 
 export function changeShownPassenger (id) {
   return {type: CHANGE_SHOWN_PASSENGER, id}
@@ -46,6 +47,10 @@ export function removeSelectedPassenger (id) {
 }
 export function removeAllSelectedPassengers () {
   return {type: REMOVE_ALL_SELECTED_PASSENGERS}
+}
+
+export function setPassengerList (list) {
+  return {type: SET_PASSENGER_LIST, list}
 }
 
 // Destination management

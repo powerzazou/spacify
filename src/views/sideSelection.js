@@ -10,9 +10,7 @@ import * as actionCreators from '../action-creators'
 
 class SideSelection extends Component {
   changeSelectedSide (sideId) {
-    const newShownPassengerId = (sideId === 1) ? 20 : 22
     this.props.changeSelectedSide(sideId)
-    this.props.changeShownPassenger(newShownPassengerId)
     this.props.removeAllSelectedPassengers()
   }
   render () {
@@ -54,7 +52,7 @@ class SideSelection extends Component {
   }
 }
 
-const mapStateToProps = ({ sides }) => ({ sides })
+const mapStateToProps = ({ sides, passengers }) => ({ sides, passengers })
 const mapDispatchToProps = (dispatch) => {
   const { changeShownSide, changeSelectedSide, changeShownPassenger, removeAllSelectedPassengers } = actionCreators
   return bindActionCreators({ changeShownSide, changeSelectedSide, changeShownPassenger, removeAllSelectedPassengers }, dispatch)

@@ -64,31 +64,31 @@ class ShipSelection extends Component {
     }
   }
   async componentDidMount () {
-    // creation du state en combinant API pilote privé + swapi
-    try {
-      const supportedStarship = await window.fetch('https://test-pilote-prive.herokuapp.com/api/starships').then((response) => response.json())
-      const starships = await Promise.all(
-        supportedStarship.map((starship) => {
-          return window.fetch(`https://swapi.co/api/starships/${starship.id}/`).then((response) => response.json()).then((res) => {
-            res.id = starship.id
-            return res
-          })
-        }))
-
-      const formatedStarships = starships.map((ship) => {
-        return {
-          id: ship.id,
-          name: ship.name,
-          capacity: parseInt(ship.passengers, 10),
-          manufacturer: ship.manufacturer,
-          model: ship.model,
-          length: ship.length
-        }
-      })
-      this.props.setSpaceshipList(formatedStarships)
-    } catch (e) {
-      // TODO set une erreur dans le state et afficher
-      console.error(e)
+    if (this.props.ships.shipList.length === 0) {
+      try {
+        const supportedStarship = await window.fetch('https://test-pilote-prive.herokuapp.com/api/starships').then((response) => response.json())
+        const starships = await Promise.all(
+          supportedStarship.map((starship) => {
+            return window.fetch(`https://swapi.co/api/starships/${starship.id}/`).then((response) => response.json()).then((res) => {
+              res.id = starship.id
+              return res
+            })
+          }))
+        const formatedStarships = starships.map((ship) => {
+          return {
+            id: ship.id,
+            name: ship.name,
+            capacity: parseInt(ship.passengers, 10),
+            manufacturer: ship.manufacturer,
+            model: ship.model,
+            length: ship.length
+          }
+        })
+        this.props.setSpaceshipList(formatedStarships)
+      } catch (e) {
+        // TODO set une erreur dans le state et afficher
+        console.error(e)
+      }
     }
   }
 }
