@@ -28,15 +28,8 @@ const initialState = {
   },
   destinations: {
     selectedDestinationId: null,
-    shownDestinationId: 9,
-    destinationList: [
-      {id: 9, name: 'Coruscant', climat: 'arid', gravity: '8,4N/KG', image: 'coruscant.png'},
-      {id: 2, name: 'Earth', image: 'earth.png'},
-      {id: 4, name: 'Hoth', image: 'hoth.png'},
-      {id: 8, name: 'Naboo', image: 'naboo.png'},
-      {id: 1, name: 'Tatooine', image: 'tatooine.png'},
-      {id: 3, name: 'Yavin-4', image: 'yavin4.png'}
-    ]
+    shownDestinationId: null,
+    destinationList: []
   }
 }
 

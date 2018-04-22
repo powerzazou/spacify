@@ -56,6 +56,7 @@ export function setPassengerList (list) {
 // Destination management
 export const CHANGE_SHOWN_DESTINATION = '@@SPACIFY/CHANGE_SHOWN_DESTINATION'
 export const CHANGE_SELECTED_DESTINATION = '@@SPACIFY/CHANGE_SELECTED_DESTINATION'
+export const SET_DESTINATION_LIST = '@@SPACIFY/SET_DESTINATION_LIST'
 
 export function changeShownDestination (id) {
   return {type: CHANGE_SHOWN_DESTINATION, id}
@@ -63,4 +64,8 @@ export function changeShownDestination (id) {
 
 export function changeSelectedDestination (id) {
   return {type: CHANGE_SELECTED_DESTINATION, id}
+}
+
+export function setDestinationList (list) {
+  return {type: SET_DESTINATION_LIST, list}
 }

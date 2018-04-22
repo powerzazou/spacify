@@ -15,7 +15,7 @@ class TripOverview extends Component {
     const itemListItems = passengers.passengerList.filter((passenger) => {
       return passengers.selectedPassengersIds.includes(passenger.id)
     }).map((passenger) => {
-      return {id: passenger.id, source: `/assets/img-content/miniature/perso/${passenger.image}`}
+      return {id: passenger.id, source: `/assets/img-content/miniature/perso/${passenger.id}.png`}
     })
     const selectedShip = ships.shipList.find(ship => ship.id === ships.selectedShipId)
     const selectedDestination = destinations.destinationList.find(destination => destination.id === destinations.selectedDestinationId)
@@ -29,11 +29,11 @@ class TripOverview extends Component {
           <PreviousStepComponent path='/destination-selection' />
           <div className='overview'>
             <div className='overviewLeft'>
-              <img className='shipImage' src={`/assets/img-content/focus/spaceship/${selectedShip.image}`} />
+              <img className='shipImage' src={`/assets/img-content/focus/spaceship/${selectedShip.id}.png`} />
               <ItemListComponent items={itemListItems} />
             </div>
             <div className='overviewRight'>
-              <img className='destinationImage' src={`/assets/img-content/focus/planet/${selectedDestination.image}`} />
+              <img className='destinationImage' src={`/assets/img-content/focus/planet/${selectedDestination.id}.png`} />
             </div>
           </div>
           <div className='rightEmptyColumn' />
