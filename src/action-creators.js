@@ -76,3 +76,9 @@ export const SET_QUOTATION_PRICE = '@@SPACIFY/SET_QUOTATION_PRICE'
 export function setQuotationPrice (quotation) {
   return {type: SET_QUOTATION_PRICE, quotation}
 }
+
+export const SET_ORDER_CONFIRMATION = '@@SPACIFY/SET_ORDER_CONFIRMATION'
+
+export function setOrderConfirmation (order) {
+  return {type: SET_ORDER_CONFIRMATION, order}
+}

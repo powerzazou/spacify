@@ -10,6 +10,30 @@ import ItemListComponent from '../common-components/item-list/itemList'
 import * as actionCreators from '../action-creators'
 
 class TripOverview extends Component {
+  async orderRide () {
+    const { starship_id, planet_id, passengersId } = this.props.quotation
+    const requestBody = {
+      starship_id: starship_id,
+      planet_id: planet_id,
+      passengers: passengersId
+    }
+    try {
+      const orderConfirmation = await window.fetch('https://test-pilote-prive.herokuapp.com/api/ride/order', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      }).then((response) => response.json())
+      this.props.setOrderConfirmation(orderConfirmation)
+      this.props.changePage('/confirmation')
+    } catch (e) {
+      // TODO set une erreur dans le state et afficher
+      console.error(e)
+    }
+    this.props.changePage('/confirmation')
+  }
   render () {
     const { passengers, ships, destinations, quotation } = this.props
     const itemListItems = passengers.passengerList.filter((passenger) => {
@@ -40,7 +64,7 @@ class TripOverview extends Component {
 
         </div>
         <div className='viewBottom'>
-          <button className='yellowButton' onClick={() => this.props.changePage('/confirmation')}>{quotation.price} {quotation.currency} <br /> GO</button>
+          <button className='yellowButton' onClick={() => this.orderRide()}>{quotation.price} {quotation.currency} <br /> GO</button>
         </div>
       </div>
     )
@@ -71,8 +95,8 @@ class TripOverview extends Component {
 
 const mapStateToProps = ({ passengers, destinations, ships, quotation }) => ({ passengers, destinations, ships, quotation })
 const mapDispatchToProps = (dispatch) => {
-  const { setQuotationPrice } = actionCreators
-  return bindActionCreators({ setQuotationPrice, changePage: (path) => push(path) }, dispatch)
+  const { setQuotationPrice, setOrderConfirmation } = actionCreators
+  return bindActionCreators({ setQuotationPrice, setOrderConfirmation, changePage: (path) => push(path) }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripOverview)

@@ -5,6 +5,7 @@ import sides from './sides'
 import passengers from './passengers'
 import destinations from './destinations'
 import quotation from './quotations'
+import orderConfirmation from './orderConfirmation'
 import { SET_QUOTATION_PRICE } from '../action-creators'
 
 const coreReducer = combineReducers({
@@ -13,6 +14,7 @@ const coreReducer = combineReducers({
   passengers,
   destinations,
   quotation,
+  orderConfirmation,
   routing: routerReducer
 })
 
